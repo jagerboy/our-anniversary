@@ -13,7 +13,7 @@
     justify-content: space-between;
     align-items: center;
     font-family: Public Sans, sans-serif;
-    background-color: #fff3e3;
+    background-color: #f3eed9;
   }
   
   .splash-screen {
@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #fff3e3;
+    background-color: #f3eed9;
     background-size: cover; /* Gambar memenuhi elemen */
     text-align: center;
   }
@@ -44,30 +44,11 @@
   }
   
   #open-letter-btn:hover {
-    background-color: #ff4a3b;
+    background-color: #ff819a;
     transform: scale(1.1);
   }
   
-  .play-button {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    padding: 7px;
-    font-size: 12px;
-    border-radius: 100px;
-    cursor: pointer;
-    align-items: center;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .play-button:hover {
-    background-color: #d44f47;
-    transform: scale(1.1);
-  }
-  
-  .play-button:active {
-    transform: scale(0.95);
-  }
-  
+ 
   .content {
     flex-grow: 50;
   }
@@ -78,7 +59,7 @@
     overflow: hidden;
     position: fixed; /* Membuat menu tetap di atas saat digulir */
     top: 0;
-    z-index: 1000;
+    z-index: 1;
     width: 100%; /* Pastikan tab menu memiliki lebar penuh */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan di bawah menu */
   }
@@ -106,27 +87,83 @@
   }
   
   .tab-menu a:hover {
-    background-color: #ff6f61;
+    background-color: #fc6868;
   }
   
   .tab-menu a.active {
-    background-color: #ff6f61;
+    background-color: #fc6868;
+  }
+
+  .splash-screen {
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out;
   }
   
+  .splash-screen.hidden {
+    opacity: 0;
+    pointer-events: none; /* Menghindari interaksi dengan elemen tersembunyi */
+  }
+
+  /* Animasi Fade-In */
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+
+.audio-player {
+  position: fixed;
+  top: 2px;
+  right: 10px;
+  z-index: 2;
+  background-color: white;
+  border: 2px solid #fc6868;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.audio-player button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fc6868;
+  cursor: pointer;
+}
+
+.audio-player button:hover {
+  color: #ff819a;
+}
+
   .main-content {
     display: none;
-    margin-top: 60px; /* Sesuaikan dengan tinggi tab menu */
+    margin-top: 40px; /* Sesuaikan dengan tinggi tab menu */
+    padding-top: 20px; /* Menambah ruang atas pada konten utama */
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
   }
-  
-  .profile-section, .message-section, .journey-section {
+
+  .main-content.visible {
+    opacity: 1;
+  }
+
+
+  .profile-section h2, .message-section, .journey-section h2 {
     margin-bottom: 30px;
     font-size: 14px;
+    padding-top: 50px; /* Menambahkan padding-top sesuai dengan tinggi tab-menu */
   }
   
   .profile-container {
     display: flex;
     gap: 30px;
     margin-top: 20px;
+
     justify-content: center;
     flex-wrap: wrap; /* Allows flexibility on smaller screens */
   }
@@ -150,10 +187,10 @@
   
   .message-section {
     text-align: center;
-    background-color: #fd857a;
+    background-color: #ff819a;
     position: relative;
-    padding: 40px 20px;
-    margin-top: 20px;
+    padding: 20px 20px;
+    margin-top: 0;
     margin-bottom: 20px;
   }
   
@@ -172,11 +209,12 @@
   .message-section h2 {
     text-align: center;
     margin-bottom: 20px;
+    padding-top: 60px; /* Menambahkan padding-top sesuai dengan tinggi tab-menu */
   }
   
   .message-section p {
     text-align: left;
-    background-color: #fd857a;
+    background-color: #ff819a;
     margin-bottom: 7px;
   }
   
@@ -193,7 +231,7 @@
   }
   
   #scroll-btn:hover {
-    background-color: #ff4a3b;
+    background-color: #fc6868;
   }
   
   .journey-section h2 {

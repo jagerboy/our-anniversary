@@ -12,22 +12,18 @@
     <div class="letter-container">
       <h1>Welcome Babe💕</h1>
       <p>Click the button below to open the letter</p>
+      <div class="content"></div>
       <button id="open-letter-btn">Open Letter 💌</button>
-      <div class="content"><br></div>
-      <button class="play-button" onclick="playAudio()">Play the Song ▶️ </button>
-
-<script>
-  function playAudio() {
-    var audio = new Audio('AAY.mp3');
-    audio.play();
-  }
-</script>
-
     </div>
   </div>
 
+
+
   <!-- Main Content (Hidden Initially) -->
-  <div id="main-content" class="main-content">
+  <div id="main-content" class="main-content fade-in">
+    <div id="audio-player" class="audio-player">
+      <button id="play-pause-btn">Play</button>
+    </div>
 
 <!-- Tab Menu -->
 <nav class="tab-menu">
@@ -52,6 +48,7 @@
         </figure>
       </div>
       <p>Berikut Merupakan Sepasang Kekasih yang Sudah Menjalani Hubungan Selama Satu Tahun.</p>
+      <br>
     </section>
 
     <!-- Pesan Anniversary -->
@@ -60,16 +57,18 @@
       <div class="decorations">
         <img src="flower-icon.png" alt="Flower" class="flower-icon">
         <img src="heart-icon.png" alt="Heart" class="heart-icon">
+        <img src="flower-icon.png" alt="Flower" class="flower-icon">
+        <img src="heart-icon.png" alt="Heart" class="heart-icon">
       </div>
       <p>Gak kerasa udah setahun kita menjalani hubungan ini. Satu tahun penuh kenangan, canda tawa, dan tentunya momen-momen kecil yang bikin semuanya jadi lebih berarti. Terima kasih sudah jadi teman, sahabat, dan pasangan yang luar biasa buat aku. Kamu selalu ada di setiap langkahku, baik di saat senang maupun susah, dan itu yang bikin aku makin merasa beruntung.</p>
       <p></p>
-      <p>Mungkin kita gak selalu sempurna, tapi setiap tantangan yang kita lewati bersama justru bikin kita lebih kuat dan lebih dekat. Setiap pembicaraan, tawa, dan bahkan perbedaan pendapat yang kita hadapi, semuanya membentuk kita menjadi pasangan yang lebih baik. Aku selalu belajar banyak dari kamu, mulai dari cara berpikir sampai cara kamu menghargai segala hal dalam hidup ini.</p>
+      <p>Mungkin kita gak selalu sempurna, tapi setiap tantangan yang kita lewati bersama justru bikin kita lebih kuat dan lebih dekat. Aku minta maaf juga atas seringnya kesalahan yang aku perbuat. Setiap pembicaraan, tawa, dan bahkan perbedaan pendapat yang kita hadapi, semuanya membentuk kita menjadi pasangan yang lebih baik. Aku selalu belajar banyak dari kamu, mulai dari cara berpikir sampai cara kamu menghargai segala hal dalam hidup ini.</p>
       <p></p>
       <p>Gak cuma satu tahun, aku berharap kita bisa terus bertumbuh bersama, menjelajahi hal-hal baru, dan bikin lebih banyak kenangan indah. Aku nggak sabar untuk masa depan kita, apapun itu, karena aku yakin kita bisa menghadapi semuanya bersama. Terima kasih sudah jadi bagian terbaik dalam hidupku. Kamu bukan hanya pasangan, tapi juga orang yang bikin aku merasa nyaman, bahagia, dan lebih baik setiap harinya.</p>
       <p></p>
-      <p>Aku sangat menghargai setiap waktu yang kita habiskan bersama, dan I love you more than I can express in words. Semoga kita terus bisa menjaga kebahagiaan ini, dan melewati tahun-tahun mendatang dengan penuh cinta, tawa, dan kebahagiaan.
+      <p>Aku sangat-sangat-sangat menghargai setiap waktu yang kita habiskan bersama, and I love you more than I can express in words. Semoga kita terus bisa menjaga kebahagiaan ini, dan melewati tahun-tahun mendatang dengan penuh cinta, kasih sayang, tawa, dan juga kebahagiaan.
       <p></p>
-      <p>Happy 1st Anniversary, sayang! I love you more than you know!</p>
+      <p>Happy 1st Anniversary, sayangku, cantikku, duniaku! I love you more than you know! 🤍</p>
       <button id="scroll-btn">Scroll to Our Journey</button>
       <div class="decorations">
         <img src="heart-icon.png" alt="Heart" class="heart-icon">
@@ -78,6 +77,7 @@
         <img src="flower-icon.png" alt="Flower" class="flower-icon">
         <img src="heart-icon.png" alt="Heart" class="heart-icon">
         <img src="flower-icon.png" alt="Flower" class="flower-icon">
+        <img src="heart-icon.png" alt="Heart" class="heart-icon">
         <br>
         <br>
       </div>
@@ -127,11 +127,51 @@
   </section>
 
   <script>
+// Fungsi untuk memutar audio
+let audio = new Audio('AAY.mp3');
+let isPlaying = false;
+ 
     // Event listener for "Open Letter" button
     document.getElementById("open-letter-btn").addEventListener("click", function() {
-      document.querySelector(".splash-screen").style.display = "none";
-      document.getElementById("main-content").style.display = "block";
-    });
+      const splashScreen = document.querySelector(".splash-screen");
+      const mainContent = document.getElementById("main-content");
+
+      splashScreen.style.display = "none"; // Sembunyikan splash screen
+      mainContent.classList.add("fade-in"); // Tambahkan kelas fade-in
+      mainContent.style.display = "block"; // Tampilkan elemen utama
+
+  // Tambahkan kelas visible setelah sedikit waktu untuk memicu transisi
+  setTimeout(() => {
+    mainContent.classList.add("visible");
+  }, 10);
+
+
+    // Putar musik saat tombol diklik
+    playAudio();
+});
+
+// Fungsi untuk memutar audio
+function playAudio() {
+  audio.play();
+  isPlaying = true;
+  document.getElementById("play-pause-btn").textContent = "❚❚";
+}
+
+// Fungsi untuk menghentikan audio
+function pauseAudio() {
+  audio.pause();
+  isPlaying = false;
+  document.getElementById("play-pause-btn").textContent = "▶";
+}
+
+// Event listener untuk tombol play/pause
+document.getElementById("play-pause-btn").addEventListener("click", function() {
+  if (isPlaying) {
+    pauseAudio();
+  } else {
+    playAudio();
+  }
+});
 
     // Event listener for "Scroll to Our Journey" button
     document.getElementById("scroll-btn").addEventListener("click", function() {
