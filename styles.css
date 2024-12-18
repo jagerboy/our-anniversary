@@ -76,7 +76,7 @@
   .tab-menu {
     background-color: #ffffff;
     overflow: hidden;
-    position: sticky;
+    position: fixed; /* Membuat menu tetap di atas saat digulir */
     top: 0;
     z-index: 1000;
     width: 100%; /* Pastikan tab menu memiliki lebar penuh */
