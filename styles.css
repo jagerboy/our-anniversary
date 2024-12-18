@@ -262,81 +262,75 @@
     margin-bottom: 10px;
   }
   
-  /* Media Queries for Responsiveness */
-  @media screen and (max-width: 768px) {
-    .profile-container {
-      flex-direction: column; /* Stack the profile images on smaller screens */
-      align-items: center;
-    }
-
-    .tab-menu {
-      background-color: #ffffff;
-      overflow: hidden;
-      position: fixed; /* Menempel di atas layar */
-      top: 0; /* Berada di posisi paling atas */
-      z-index: 1000; /* Prioritas lapisan lebih tinggi */
-      width: 100%; /* Lebar penuh layar */
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+  /* Media Queries untuk Tablet dan Desktop */
+@media (min-width: 600px) {
+  .profile-container {
+    flex-direction: row; /* Tata letak baris untuk layar sedang */
+    gap: 30px;
   }
 
-    .tab-menu ul {
-      flex-direction: row; /* Stack the tabs vertically */
-    }
-  
-    .tab-menu a {
-      font-size: 16px; /* Smaller font size for mobile */
-      padding: 10px;
-    }
-  
-    .journey-collage {
-      grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
-    }
-  
-    .journey-collage .polaroid {
-      width: 160px; /* Smaller size for images on smaller screens */
-      height: 200px;
-    }
-  
-    .journey-collage .polaroid:nth-child(odd),
-    .journey-collage .polaroid:nth-child(even) {
-      transform: rotate(0deg); /* Remove image rotation on small screens */
-    }
-  
-    #scroll-btn {
-      padding: 8px 16px; /* Adjust button size */
-      font-size: 14px; /* Smaller font size */
-    }
-  
-    #open-letter-btn {
-      font-size: 16px; /* Smaller font size for mobile */
-      padding: 8px 16px;
-    }
-  
-    .message-section {
-      padding: 30px 15px; /* Adjust padding for mobile */
-    }
+  .journey-collage {
+    grid-template-columns: repeat(2, 1fr); /* Dua kolom */
+    gap: 20px;
   }
-  
-  @media screen and (max-width: 480px) {
-    body {
-      font-size: 14px; /* Smaller font size for very small screens */
-    }
-  
-    .profile-container img {
-      width: 120px; /* Smaller profile images */
-      height: 120px;
-    }
-  
-    .message-section h2 {
-      font-size: 22px; /* Smaller header font size */
-    }
-  
-    .journey-collage {
-      grid-template-columns: 1fr; /* Single column for mobile */
-    }
-  
-    .journey-collage .polaroid {
-      width: 140px; /* Even smaller image size for very small screens */
-      height: 180px;
-    }
+}
+
+@media (min-width: 992px) {
+  .profile-container {
+    gap: 50px;
   }
+
+  .journey-collage {
+    grid-template-columns: repeat(3, 1fr); /* Tiga kolom untuk layar besar */
+  }
+
+  .letter-container {
+    max-width: 600px; /* Batasi lebar kontainer */
+  }
+}
+
+@media (min-width: 1200px) {
+  .journey-collage {
+    grid-template-columns: repeat(4, 1fr); /* Empat kolom untuk layar sangat besar */
+  }
+}
+
+/* Navigasi Tab Responsif */
+.tab-menu ul {
+  display: flex;
+  flex-wrap: wrap; /* Bungkus item jika tidak cukup ruang */
+  justify-content: center;
+  gap: 10px;
+}
+
+.tab-menu a {
+  font-size: 14px; /* Ukuran font lebih kecil untuk layar kecil */
+  padding: 10px 15px;
+}
+
+/* Responsivitas untuk Pesan */
+.message-section {
+  padding: 20px; /* Sesuaikan padding */
+  font-size: 14px; /* Ukuran font lebih kecil */
+}
+
+.message-section p {
+  font-size: 14px; /* Sesuaikan untuk layar kecil */
+}
+
+@media (min-width: 768px) {
+  .message-section {
+    font-size: 16px; /* Lebih besar untuk layar sedang */
+  }
+}
+
+/* Responsivitas untuk Polaroid */
+.polaroid {
+  width: 100%; /* Gunakan lebar penuh default */
+  height: auto; /* Sesuaikan tinggi berdasarkan lebar */
+}
+
+.polaroid img {
+  width: 100%; /* Gambar memenuhi kontainer */
+  height: auto; /* Sesuaikan proporsi */
+}
