@@ -156,14 +156,13 @@
   .profile-section h2, .message-section, .journey-section h2 {
     margin-bottom: 30px;
     font-size: 14px;
-    padding-top: 50px; /* Menambahkan padding-top sesuai dengan tinggi tab-menu */
+    padding-top: 40px; /* Menambahkan padding-top sesuai dengan tinggi tab-menu */
   }
   
   .profile-container {
     display: flex;
     gap: 30px;
     margin-top: 20px;
-
     justify-content: center;
     flex-wrap: wrap; /* Allows flexibility on smaller screens */
   }
@@ -190,6 +189,7 @@
     background-color: #ff819a;
     position: relative;
     padding: 20px 20px;
+    padding-top: 20px;
     margin-top: 0;
     margin-bottom: 20px;
   }
@@ -209,7 +209,7 @@
   .message-section h2 {
     text-align: center;
     margin-bottom: 20px;
-    padding-top: 60px; /* Menambahkan padding-top sesuai dengan tinggi tab-menu */
+    padding-top: 30px; /* Menambahkan padding-top sesuai dengan tinggi tab-menu */
   }
   
   .message-section p {
